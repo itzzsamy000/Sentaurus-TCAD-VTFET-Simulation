@@ -1,112 +1,247 @@
-﻿# Sentaurus TCAD VTFET Simulation
+﻿<div align="center">
 
-> **Vertical Tunnel Field-Effect Transistor (VTFET) simulation using Synopsys Sentaurus TCAD**
+<h1>
+  <img src="https://img.shields.io/badge/⚡-VTFET%20TCAD%20Simulation-blueviolet?style=for-the-badge" alt="VTFET"/>
+</h1>
+
+<h2>🔬 Sentaurus TCAD — Vertical Tunnel Field-Effect Transistor</h2>
+
+[![Synopsys](https://img.shields.io/badge/Tool-Synopsys%20Sentaurus-blue?style=flat-square&logo=synopsys)](https://www.synopsys.com/)
+[![TCAD](https://img.shields.io/badge/Type-TCAD%20Simulation-green?style=flat-square)](https://github.com/itzzsamy000/Sentaurus-TCAD-VTFET-Simulation)
+[![License](https://img.shields.io/badge/License-Academic-orange?style=flat-square)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-itzzsamy000-black?style=flat-square&logo=github)](https://github.com/itzzsamy000)
+[![Branch](https://img.shields.io/badge/Branch-main-brightgreen?style=flat-square&logo=git)](https://github.com/itzzsamy000/Sentaurus-TCAD-VTFET-Simulation)
+
+</div>
 
 ---
 
 ## 📋 Project Description
 
-This project contains a complete Synopsys Sentaurus TCAD simulation of a **Vertical Tunnel Field-Effect Transistor (VTFET)** — a next-generation transistor architecture that exploits **Band-to-Band Tunneling (BTBT)** as its primary transport mechanism. Unlike conventional MOSFETs, TFETs can achieve sub-60 mV/decade subthreshold swing, making them ideal for ultra-low-power digital applications.
+This project contains a complete **Synopsys Sentaurus TCAD** simulation of a **Vertical Tunnel Field-Effect Transistor (VTFET)** — a next-generation transistor architecture exploiting **Band-to-Band Tunneling (BTBT)** as its primary transport mechanism.
+
+Unlike conventional MOSFETs, TFETs can achieve **sub-60 mV/decade subthreshold swing**, making them ideal candidates for **ultra-low-power digital applications** in the post-silicon era.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- 2D VTFET device structure built with Sentaurus Structure Editor (SDE)
-- Multi-material heterostructure: Germanium source, Silicon channel, HfO2 gate dielectric, Metal gate
-- Precise doping profiles (p+ Ge source, p Si channel, LDD pocket, n+ Si drain)
-- High-k gate dielectric (HfO2) with metal gate stack
-- Physics models: Fermi-Dirac, Band-gap narrowing, Mobility, SRH + Band-to-Band tunneling (BTBT)
-- Transfer characteristics (Ids-Vgs) simulation via quasistationary sweep (0 to 1.2 V)
-- SVisual post-processing scripts for result visualization
-- Material parameter files for Germanium, Silicon, HfO2, and Metal
+| Feature | Details |
+|:---|:---|
+| 🏗️ **Device Structure** | 2D VTFET built with Sentaurus SDE |
+| 🧪 **Heterostructure** | Ge source / Si channel / HfO₂ oxide / Metal gate |
+| ⚗️ **Doping Profiles** | p⁺ Ge source · p Si channel · LDD pocket · n⁺ Si drain |
+| 🔋 **Gate Dielectric** | High-k HfO₂ (1 nm) with metal gate |
+| 📐 **Physics Models** | Fermi-Dirac · BGN · BTBT · SRH · Mobility |
+| 📈 **Simulation** | Ids–Vgs quasistationary sweep (Vgs: 0 → 1.2 V) |
+| 📊 **Post-Processing** | SVisual scripts for result visualization |
 
 ---
 
 ## 🔧 Technologies Used
 
-| Tool / Technology | Purpose |
-|---|---|
-| Synopsys Sentaurus SDE | Device geometry & mesh generation |
-| Synopsys Sentaurus Device | Electrical simulation solver |
-| Synopsys SVisual | Post-processing & visualization |
-| Sentaurus Workbench (SWB) | Simulation flow management |
-| Scheme (SDE scripting) | Device definition scripts |
-| TCAD parameter files (.par) | Material models (Ge, Si, HfO2, Metal) |
+<div align="center">
+
+| Tool | Purpose |
+|:---:|:---:|
+| ![SDE](https://img.shields.io/badge/Sentaurus%20SDE-Device%20Geometry-blue?style=flat-square) | Device geometry & mesh generation |
+| ![SDEVICE](https://img.shields.io/badge/Sentaurus%20Device-Electrical%20Solver-red?style=flat-square) | Band-to-Band tunneling simulation |
+| ![SVISUAL](https://img.shields.io/badge/SVisual-Post%20Processing-green?style=flat-square) | Result visualization & plotting |
+| ![SWB](https://img.shields.io/badge/Sentaurus%20Workbench-Flow%20Management-orange?style=flat-square) | Simulation flow management |
+| ![Scheme](https://img.shields.io/badge/Scheme-SDE%20Scripting-purple?style=flat-square) | Device definition scripts |
+
+</div>
 
 ---
 
 ## 📁 Project Structure
 
-`
-VTFET/
+```
+Sentaurus-TCAD-VTFET-Simulation/
 │
-├── sde_dvs.cmd          # SDE script: device geometry, contacts, doping, meshing
-├── pp1_dvs.cmd          # SDE post-processing script
-├── sdevice_des.cmd      # Sentaurus Device: physics, solver, Ids-Vgs sweep
-├── pp2_des.cmd          # Sentaurus Device post-processing script
-├── sdevice.par          # Global sdevice parameter overrides
+├── 📄 sde_dvs.cmd          ← SDE: device geometry, contacts, doping, meshing
+├── 📄 pp1_dvs.cmd          ← SDE post-processing script (variant)
+├── 📄 sdevice_des.cmd      ← sdevice: physics, solver, Ids-Vgs sweep
+├── 📄 pp2_des.cmd          ← sdevice post-processing script
+├── 📄 sdevice.par          ← Global sdevice parameter overrides
 │
-├── Germanium.par        # Germanium material parameters
-├── Silicon.par          # Silicon material parameters
-├── HfO2.par             # Hafnium Dioxide (gate dielectric) parameters
-├── Metal.par            # Metal gate parameters
+├── 🧬 Germanium.par        ← Germanium material parameters
+├── 🧬 Silicon.par          ← Silicon material parameters
+├── 🧬 HfO2.par             ← HfO₂ gate dielectric parameters
+├── 🧬 Metal.par            ← Metal gate parameters
 │
-├── Screenshot/          # Simulation result screenshots
+├── 🖼️  Screenshot/          ← Simulation result screenshots (8 images)
 │
-└── README.md            # Project documentation
-`
-
----
-
-## ⚙️ Prerequisites
-
-- Synopsys Sentaurus TCAD (any recent version supporting SDE + sdevice)
-- A valid Synopsys FlexLM license
-- Linux/Unix or Windows with Sentaurus installed
-
----
-
-## 🚀 How to Run
-
-### Step 1 — Build device mesh (SDE)
-`ash
-sde -e -l sde_dvs.cmd
-`
-Generates REFERENCE_msh.tdr mesh file.
-
-### Step 2 — Run electrical simulation (sdevice)
-`ash
-sdevice sdevice_des.cmd
-`
-Runs Band-to-Band tunneling Vgs sweep; outputs REFERENCE_des.tdr and REFERENCE_des.plt.
-
-### Step 3 — Visualize results
-Open REFERENCE_des.plt in SVisual to plot Ids vs Vgs transfer characteristics.
+└── 📝 README.md            ← Project documentation
+```
 
 ---
 
 ## 📖 Key Simulation Parameters
 
+<div align="center">
+
 | Parameter | Value |
-|---|---|
-| Gate dielectric | HfO2 (1 nm) |
-| Gate metal thickness | 1 nm |
-| Drain bias (Vds) | 0.5 V |
-| Gate sweep (Vgs) | 0 to 1.2 V |
-| Channel material | Silicon |
-| Source material | Germanium |
-| Tunneling model | Band-to-Band (BTBT) |
+|:---:|:---:|
+| Gate Dielectric | HfO₂ — 1 nm |
+| Gate Metal | 1 nm |
+| Drain Bias (Vds) | 0.5 V |
+| Gate Sweep (Vgs) | 0 → 1.2 V |
+| Channel Material | Silicon (Si) |
+| Source Material | Germanium (Ge) |
+| Tunneling Model | Band-to-Band (BTBT) |
+| Subthreshold Model | Fermi-Dirac + OldSlotboom BGN |
+
+</div>
+
+---
+
+## 🖼️ Simulation Results & Screenshots
+
+> All results generated using **Synopsys Sentaurus Visual (SVisual)** post-processor.
+
+---
+
+### 🔵 Device Structure — Doping Concentration Map
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 164918.png" width="100%" alt="Doping Concentration Map"/>
+      <br/>
+      <b>🗺️ Doping Concentration Map</b>
+      <br/>
+      <sub>2D color map of doping profile across the VTFET structure (p⁺ Ge source → n⁺ Si drain)</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 165025.png" width="100%" alt="Mesh Structure with Doping"/>
+      <br/>
+      <b>🕸️ Mesh Structure + Doping (SDE View)</b>
+      <br/>
+      <sub>Triangular mesh generated by snmesh with doping concentration overlay</sub>
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
+### 📈 Transfer Characteristics — Ids vs Vgs
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 165922.png" width="100%" alt="Ids-Vgs Log Scale"/>
+      <br/>
+      <b>📉 Ids–Vgs (Log Scale)</b>
+      <br/>
+      <sub>Transfer characteristics showing BTBT switching behaviour on logarithmic Y-axis</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 171553.png" width="100%" alt="Ids-Vgs Linear Scale"/>
+      <br/>
+      <b>📈 Ids–Vgs (Linear Scale)</b>
+      <br/>
+      <sub>Transfer characteristics on linear scale — drain current vs gate voltage sweep</sub>
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
+### 🌈 Multi-Run Comparison & Band Diagrams
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 172243.png" width="100%" alt="Multi-Run Ids Comparison"/>
+      <br/>
+      <b>📊 Multi-Run Ids Comparison</b>
+      <br/>
+      <sub>Overlay of transfer curves from REFERENCE_des, _02_des, and _03_des runs</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 172659.png" width="100%" alt="Band Diagram + BTBT Generation"/>
+      <br/>
+      <b>⚡ Band-to-Band Generation + Band Diagram</b>
+      <br/>
+      <sub>2D BTBT generation map (left) and energy band diagram along cut-line (right)</sub>
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
+### 🔬 Conduction Band & Electric Field Analysis
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 172754.png" width="100%" alt="Conduction Band + Band Diagram"/>
+      <br/>
+      <b>🟠 Conduction Band Energy + Band Diagram</b>
+      <br/>
+      <sub>ConductionBandEnergy 2D map overlaid with complete energy band diagram</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="Screenshot/Screenshot 2026-10-21 172807.png" width="100%" alt="Electric Field + Band Diagram"/>
+      <br/>
+      <b>⚡ Electric Field + Band Diagram</b>
+      <br/>
+      <sub>Abs(ElectricField) 2D distribution and corresponding energy band cut-line plot</sub>
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
+## ⚙️ Prerequisites
+
+- ✅ **Synopsys Sentaurus TCAD** (version T-2022.03 or later recommended)
+- ✅ Valid **Synopsys FlexLM license**
+- ✅ Linux/Unix environment (standard for Sentaurus), or Windows with Cygwin
+
+---
+
+## 🚀 How to Run
+
+### Step 1 — Generate Device Mesh (SDE)
+```bash
+sde -e -l sde_dvs.cmd
+```
+> Outputs: `REFERENCE_msh.tdr` — the 2D VTFET mesh file
+
+### Step 2 — Run Electrical Simulation (sdevice)
+```bash
+sdevice sdevice_des.cmd
+```
+> Outputs: `REFERENCE_des.tdr` (2D plots) · `REFERENCE_des.plt` (Ids–Vgs data)
+
+### Step 3 — Visualize Results (SVisual)
+Open `REFERENCE_des.plt` in **SVisual** to plot transfer characteristics.
 
 ---
 
 ## 📄 License
 
-Academic and research use. Please cite appropriately if used in publications.
+This project is for **academic and research purposes**. Please cite appropriately if used in publications.
 
 ---
 
 ## 👤 Author
 
+<div align="center">
+
 **Satish** — VTFET TCAD Simulation  
-GitHub: https://github.com/itzzsamy000
+[![GitHub](https://img.shields.io/badge/GitHub-itzzsamy000-181717?style=for-the-badge&logo=github)](https://github.com/itzzsamy000)
+
+*Simulation performed at IIIT Bhopal — VLSI Lab*
+
+</div>
