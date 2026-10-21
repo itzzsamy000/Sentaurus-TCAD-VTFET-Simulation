@@ -1,0 +1,93 @@
+Evaluating file n1_dvs.cmd
+---> (sdegeo:create-rectangle (position 0.0 0.0 0.0) (position 0.03 0.03 0.0) Germanium region_1)
+#[body 5 1]
+---> (sdegeo:create-rectangle (position 0.03 0.0 0.0) (position 0.08 0.03 0.0) Silicon region_2)
+#[body 6 1]
+---> (sdegeo:create-rectangle (position 0.0 0.0 0.0) (position 0.074 -0.003 0.0) Silicon region_3)
+#[body 7 1]
+---> (sdegeo:create-rectangle (position 0.074 0.0 0.0) (position 0.08 -0.003 0.0) Silicon region_4)
+#[body 8 1]
+---> (sdegeo:create-rectangle (position 0.08 0.0 0.0) (position 0.09 -0.003 0.0) Silicon region_5)
+#[body 9 1]
+---> (sdegeo:create-rectangle (position 0.0 -0.003 0.0) (position 0.08 -0.004 0.0) HfO2 region_6)
+#[body 10 1]
+---> (sdegeo:create-rectangle (position 0.0 -0.004 0.0) (position 0.08 -0.005 0.0) Metal region_7)
+#[body 11 1]
+---> (sdegeo:define-contact-set gate 5 (color:rgb 1 0 0) ##)
+()
+---> (sdegeo:set-current-contact-set gate)
+""
+---> (sdegeo:define-contact-set source 5 (color:rgb 1 1 0) ||)
+()
+---> (sdegeo:set-current-contact-set source)
+"gate"
+---> (sdegeo:define-contact-set drain 5 (color:rgb 1 0 1) //)
+()
+---> (sdegeo:set-current-contact-set drain)
+"source"
+---> (sdegeo:define-2d-contact (list (car (find-edge-id (position 0.04 -0.005 0)))) gate)
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+---> (sdegeo:define-2d-contact (list (car (find-edge-id (position 0.09 -0.0015 0)))) drain)
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+---> (sdegeo:define-2d-contact (list (car (find-edge-id (position 0.0 0.015 0)))) source)
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+---> (sdedr:define-refeval-window RefEvalWin_1 Rectangle (position 0.0 0.0 0) (position 0.03 0.03 0))
+#[body 43 1]
+---> (sdedr:define-refeval-window RefEvalWin_2 Rectangle (position 0.0 0.0 0) (position 0.074 -0.003 0))
+#[body 44 1]
+---> (sdedr:define-refeval-window RefEvalWin_3 Rectangle (position 0.074 0.0 0) (position 0.08 -0.003 0))
+#[body 45 1]
+---> (sdedr:define-refeval-window RefEvalWin_4 Rectangle (position 0.08 0.0 0) (position 0.09 -0.003 0))
+#[body 46 1]
+---> (sdedr:define-constant-profile ConstantProfileDefinition_1 BoronActiveConcentration 1e+17)
+#t
+---> (sdedr:define-constant-profile-placement ConstantProfilePlacement_1 ConstantProfileDefinition_1 RefEvalWin_1)
+#t
+---> (sdedr:define-constant-profile ConstantProfileDefinition_2 BoronActiveConcentration 1e+15)
+#t
+---> (sdedr:define-constant-profile-placement ConstantProfilePlacement_2 ConstantProfileDefinition_2 RefEvalWin_2)
+#t
+---> (sdedr:define-constant-profile ConstantProfileDefinition_3 BoronActiveConcentration 1e+18)
+#t
+---> (sdedr:define-constant-profile-placement ConstantProfilePlacement_3 ConstantProfileDefinition_3 RefEvalWin_3)
+#t
+---> (sdedr:define-constant-profile ConstantProfileDefinition_4 ArsenicActiveConcentration 1e+20)
+#t
+---> (sdedr:define-constant-profile-placement ConstantProfilePlacement_4 ConstantProfileDefinition_4 RefEvalWin_4)
+#t
+---> (sdedr:define-refinement-size RefinementDefinition_1 0.008 0.008 0.005 0.005)
+#t
+---> (sdedr:define-refinement-placement RefinementPlacement_1 RefinementDefinition_1 RefEvalWin_1)
+#t
+---> (sdedr:define-refinement-size RefinementDefinition_2 0.008 0.008 0.005 0.005)
+#t
+---> (sdedr:define-refinement-placement RefinementPlacement_2 RefinementDefinition_2 RefEvalWin_2)
+#t
+---> (sdedr:define-refinement-size RefinementDefinition_3 0.008 0.008 0.005 0.005)
+#t
+---> (sdedr:define-refinement-placement RefinementPlacement_3 RefinementDefinition_3 RefEvalWin_3)
+#t
+---> (sdedr:define-refinement-size RefinementDefinition_4 0.008 0.008 0.005 0.005)
+#t
+---> (sdedr:define-refinement-placement RefinementPlacement_4 RefinementDefinition_4 RefEvalWin_4)
+#t
+---> (sde:set-meshing-command snmesh -a -c boxmethod)
+#t
+---> (sdedr:append-cmd-file REFERENCE)
+#t
+---> (sde:build-mesh snmesh -a -c boxmethod REFERENCE)
+#t
+---> #[end-of-file]
+"************************************************************************"
+"Sentaurus Structure Editor Obsolete commands"
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+"Obsolete Scheme command: sdegeo:define-2d-contact. Please update your input script and replace it with sdegeo:set-contact."
+"************************************************************************"
+"************************************************************************"
+"Sentaurus Structure Editor "
+"Start Time:    Wed Oct 21 15:35:10 2026"
+"End   Time:    Wed Oct 21 15:35:22 2026"
+"Total Execution Time (sec):    12"
+"Total System calls Time (sec): 0"
+"************************************************************************"
