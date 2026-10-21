@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <h1>
   <img src="https://img.shields.io/badge/⚡-VTFET%20TCAD%20Simulation-blueviolet?style=for-the-badge" alt="VTFET"/>
@@ -21,6 +21,61 @@
 This project contains a complete **Synopsys Sentaurus TCAD** simulation of a **Vertical Tunnel Field-Effect Transistor (VTFET)** — a next-generation transistor architecture exploiting **Band-to-Band Tunneling (BTBT)** as its primary transport mechanism.
 
 Unlike conventional MOSFETs, TFETs can achieve **sub-60 mV/decade subthreshold swing**, making them ideal candidates for **ultra-low-power digital applications** in the post-silicon era.
+
+---
+
+## 🔄 Simulation Flow Diagram
+
+```mermaid
+flowchart TD
+    classDef input   fill:#4A90D9,stroke:#2C5F8A,color:#fff
+    classDef tool    fill:#7B2D8B,stroke:#4A1A5C,color:#fff
+    classDef process fill:#E67E22,stroke:#A04000,color:#fff
+    classDef output  fill:#27AE60,stroke:#1A6B3C,color:#fff
+
+    A1["📄 sde_dvs.cmd\nDevice Geometry Script"]:::input
+    A2["🧬 Material Params\nGe · Si · HfO2 · Metal"]:::input
+
+    B["🏗️ STAGE 1 — Sentaurus SDE\nStructure Editor"]:::tool
+    B1["📐 Define 2D Geometry\nGe Source · Si Channel · HfO₂ · Metal Gate"]:::process
+    B2["⚗️ Assign Doping Profiles\np+ Ge · p Si · LDD Pocket · n+ Drain"]:::process
+    B3["🕸️ Generate Mesh\nsnmesh box method with Refinement"]:::process
+
+    C[("💾 REFERENCE_msh.tdr\nMesh File")]:::output
+
+    D["⚡ STAGE 2 — Sentaurus Device\nElectrical Solver"]:::tool
+    D1["🔋 Boundary Conditions\nVds = 0.5 V · Vgs = 0 V · Source GND"]:::process
+    D2["🔬 Physics Models\nFermi-Dirac · BGN · BTBT · SRH · Mobility"]:::process
+    D3["📊 Quasistationary Sweep\nVgs 0 → 1.2 V · Coupled Poisson + e + h"]:::process
+
+    E1[("💾 REFERENCE_des.tdr\n2D Plot Data")]:::output
+    E2[("💾 REFERENCE_des.plt\nIds-Vgs Current Data")]:::output
+
+    F["📈 STAGE 3 — Sentaurus Visual\nPost-Processing and Visualization"]:::tool
+    F1["🗺️ 2D Color Maps\nDoping · BTBT · Band Energy · E-Field"]:::process
+    F2["📉 Transfer Characteristics\nIds vs Vgs — Log and Linear Scale"]:::process
+    F3["🌈 Band Diagrams\nEc · Ev · Efn · Efp along cut-lines"]:::process
+
+    G1["✅ Doping Map + Mesh View"]:::output
+    G2["✅ Ids-Vgs Curve\nLog + Linear + Multi-Run"]:::output
+    G3["✅ BTBT Map + Band Diagram"]:::output
+
+    A1 --> B
+    A2 --> B
+    B --> B1 --> B2 --> B3 --> C
+    C --> D
+    A2 --> D
+    D --> D1 --> D2 --> D3
+    D3 --> E1
+    D3 --> E2
+    E1 --> F
+    E2 --> F
+    F --> F1 --> G1
+    F --> F2 --> G2
+    F --> F3 --> G3
+```
+
+> 💡 **Flow:** Input Scripts & Material Params → **SDE** *(Geometry + Doping + Mesh)* → **sdevice** *(Physics + Sweep)* → **SVisual** *(Plots + Band Diagrams)* → **Results**
 
 ---
 
